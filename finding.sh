@@ -18,3 +18,12 @@ parallel -0 -j 10 '
   echo "Removing files from: $dir"
   rm -f "{}"
 '
+
+# Finding Specific Files, Echoing Their Names, and Deleting Them
+find . -type f -name "*.chk" -exec sh -c 'echo "Deleting: {}"; rm "{}"' \;
+
+# Finding Multiple Specific File Types, Echoing Their Names, and Deleting Them
+find . -type f \( -name "*.chk" -o -name "*.qlog" -o -name "*.err" -o -name "*.fchk" -o -name "*.mwfn" -o -name "*.cub" \) -exec sh -c 'echo "Deleting: {}"; rm "{}"' \;
+
+# Finding Files in a Range of Directories
+find frame_{30001..87531}/gs_nm -type f \( -name "*.out" -o -name "coords.xyz" \) -print
