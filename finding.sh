@@ -27,3 +27,7 @@ find . -type f \( -name "*.chk" -o -name "*.qlog" -o -name "*.err" -o -name "*.f
 
 # Finding Files in a Range of Directories
 find frame_{30001..87531}/gs_nm -type f \( -name "*.out" -o -name "coords.xyz" \) -print
+
+
+# Find All Contents Within a Directory and Delete Them
+find /path/to/directory -mindepth 1 -print0 | parallel -0 rm -rf {}
